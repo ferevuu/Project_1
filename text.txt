@@ -1,0 +1,1 @@
+zkouska textoveho souboru z gitu do vscode
