@@ -1,1 +1,1 @@
-pypy
+print("Textovy analyer")
