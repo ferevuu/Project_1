@@ -120,7 +120,7 @@ print("-" * 30)
 for delka, pocet in serazene_slova:
     hvezdy = "*" * pocet
     print(f" {delka:2}|{hvezdy:20}|{pocet:2}")
-    break
+
 print("Quitting Text Analyzer, thanks for using it!")
 quit()
 
