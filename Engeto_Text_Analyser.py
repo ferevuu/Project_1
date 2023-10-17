@@ -103,6 +103,7 @@ print(f"Součet všech čísel v textu: {suma_cisel}")
 print(cara)
 
 
+# Sekce pro výpočet grafu, který indikuje četnost a počet písmen v textu
 delka_slov = {}
 
 for delka in slova:
