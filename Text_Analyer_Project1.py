@@ -53,13 +53,10 @@ while True:
         print("Wrong Username or Password, Try again!".upper())
 
 # Výběr z nabídky textu 1 až 3
-
 print(cara)
 
 for idx, text in enumerate(TEXTS, 1):
     print(f"Text {idx} to Analyze:\n {text}\n")
-
-
 
 # Vybírání textu k Analýze
 while True:
@@ -79,17 +76,42 @@ while True:
         print("You have to choose number between 1 - 3, Don´t enter Text here!")
         print("Closing Analyzer")
         quit()
-
-
+print(cara)
 # Očištění textu o speciální znaky a rozdělení podle mezer
-
-
-
-cisty_text = "".join(znak for znak in text.strip(,.?:!)).split(",")
-print(cisty_text)
-
+clean_text = "".join(znak for znak in textik if znak not in (".,?!:"))
+slova = clean_text.split()
 
 # Vypsaní statistik textu a for cykly pro ně
+zac_velke_pismeno = [slovo for slovo in slova if slovo.istitle()]
+velke_pismeno = [slovo for slovo in slova  if slovo.isupper()]
+male_pismeno = [slovo for slovo in slova if slovo.islower()]
+cislo = [slovo for slovo in slova if slovo.isdigit()]
+sumaa = sum(int(suma) for suma in cislo if int(suma))
+
+print("Počet slov v Textu: ", len(slova))
+print("Počet slov začínajících velkými písmeny: ", len(zac_velke_pismeno))
+print("Počet slov psané malými písmeny: ", len(male_pismeno))
+print("Počet slov psané Velkými písmeny: ", len(velke_pismeno))
+print("Počet čísel v Textu: ", len(cislo))
+print("Součet čísel v Textu: ", sumaa)
 
 # Sekce pro výpočet grafu, který indikuje četnost a počet písmen v textu
+print(cara)
+print(f"LEN | OCCURENCES | NR")
+print(cara)
+
+grafik = {}
+
+for graf in slova:
+    slovo = len(graf)
+    if graf not in grafik:
+        grafik[slovo] = 1
+    else:
+        grafik[slovo] += 1
+
+seradit = sorted(grafik.items(), reverse=True)
+
+for graf, hvezdy in seradit:
+    hvezda = "*" * hvezdy
+    print(f"{graf:2} | {hvezda:20} | {hvezdy}")
 
