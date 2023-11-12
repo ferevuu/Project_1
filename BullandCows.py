@@ -46,12 +46,18 @@ def nozero(code):
     if code.startswith("0"):
         print("The code CAN´T starts with 0!")
 
-def check(code):
+def check(user_code, correct_code):
     """
     Checks if´s there is correct guess in the Bulls and Cows game and return values
+    First code is the code that user is typing and trying to guess
+    Second code is the correct code which he needs to guess
     """
-    check = {}
-    for i, (k, v) in enumerate(code.items()):
+    user_code = []
+    correct_code = []
+    user_codes = dict()
+    correct_codes = dict()
+    for i, (k, v) in enumerate(user_code.items()):
+        if u
         
 
 
