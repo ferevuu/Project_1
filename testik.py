@@ -43,6 +43,28 @@ import random
             
 #    return print(type(guess_code)), print(type(random_number)), print(user_codes), print(correct_codes)
 
+# def compare(user_code, correct_code):
+#     """
+#     Checks if´s there is correct guess in the Bulls and Cows game and return values
+#     First code is the code that user is typing and trying to guess
+#     Second code is the correct code which he needs to guess
+#     """
+
+#     guess_code = str(user_code)
+#     random_number = str(correct_code)
+#     user_codes = dict()
+#     correct_codes = dict()
+#     common_numbers = dict()
+#     same_code = []
+#     bulls = dict()
+
+
+#     for i, x in enumerate(guess_code):
+#         user_codes[i] = x
+
+#     for ix, y in enumerate(random_number):
+#         correct_codes[ix] = y
+
 
 def cows(code1, code2):
     """
@@ -53,17 +75,38 @@ def cows(code1, code2):
 
     guess_code = str(code1)
     random_number = str(code2)
-    check_c1 = dict()
-    check_c2 = dict()
-    common = []
+    check_c1 = []
+    check_c2 = []
+    bulls = []
+    cows = []
 
-    for x in enumerate(check_c1.values()):
-        if x in check_c2.values():
-            common.append(x)
-            if len(common) == 1:
-                print(len(common), "Cow")
-            elif len(common) == 0 or len(common) > 1:
-                print(len(common), "Cows")
+    for i, x in enumerate(guess_code):
+        check_c1.append(x)
+
+    for i, y in enumerate(random_number):
+        check_c2.append(y)
+
+    while True:
+        for i, x in enumerate(check_c1):
+            for ix, y in enumerate(check_c2):
+                if ix == i and x == y:
+                    bulls.append(x)
+                elif x in check_c2 and not ix == i and x == y:
+                    cows.append(y)
+
+        if len(bulls) == 1 and len(cows) == 1:
+            print(f"{len(bulls)} Bull, {len(cows)} Cow")
+        elif len(bulls) != 1 and len(cows) != 1:
+            print(f"{len(bulls)} Bulls, {len(cows)} Cows")
+        if len(bulls) == 1 and len(cows) != 1:
+            print(f"{len(bulls)} Bull, {len(cows)} Cows")
+        elif len(bulls) != 1 and len(cows) == 1:
+            print(f"{len(bulls)} Bulls, {len(cows)} Cow")
+            
+        break
+
+    return
+
 
 
 def duplicities(code):
@@ -75,14 +118,15 @@ def duplicities(code):
     return len(string) != len(set(string))
 
 
-while True:
-    random_number = random.randrange(1000, 9999)
-    if duplicities(random_number) is False:
-        break
-    else:
-        continue
-print(random_number)
+# while True:
+#     random_number = random.randrange(1000, 9999)
+#     if duplicities(random_number) is False:
+#         break
+#     else:
+#         continue
+# print(random_number)
 
 code = input("Enter a 4 Digits Number: ")
+random_number = 1234
 cows(code, random_number)
     

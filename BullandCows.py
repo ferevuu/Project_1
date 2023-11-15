@@ -18,10 +18,17 @@ def duplicities(code):
     Converts 4 Digit input code to a string to compare the values
     """
     string = str(code)
-    # It compares if the lenght of the strings is the same or not
-    return len(string) != len(set(string))
 
-def length(code):
+    if len(string) != len(set(string)):
+        value = False
+        print("Duplicities are not allowed, Enter unique numbers")
+    else:
+        value = True
+
+    # It compares if the lenght of the strings is the same or not
+    return value
+
+def control(code):
     """
     Checks if entered input is 4 digits long and if it´s and integer
     """
@@ -45,64 +52,14 @@ def nozero(code):
     """
     if code.startswith("0"):
         print("The code CAN´T starts with 0!")
+        value = False
+    else:
+        value = True
 
-def check(user_code, correct_code):
-    """
-    Checks if´s there is correct guess in the Bulls and Cows game and return values
-    First code is the code that user is typing and trying to guess
-    Second code is the correct code which he needs to guess
-    """
-    user_code = []
-    correct_code = []
-    user_codes = dict()
-    correct_codes = dict()
-    for i, (k, v) in enumerate(user_code.items()):
-        if u
-        
-
-def compare(user_code, correct_code):
-    """
-    Checks if´s there is correct guess in the Bulls and Cows game and return values
-    First code is the code that user is typing and trying to guess
-    Second code is the correct code which he needs to guess
-    """
-
-    guess_code = str(user_code)
-    random_number = str(correct_code)
-    user_codes = dict()
-    correct_codes = dict()
-    common_numbers = dict()
-    same_code = []
-    bulls = dict()
+    return value
 
 
-    for i, x in enumerate(guess_code):
-        user_codes[i] = x
-
-    for ix, y in enumerate(random_number):
-        correct_codes[ix] = y
-
-    for key1, value1 in user_codes.items(): # Uzivatel hada
-        for key2, value2 in correct_codes.items(): # Spravny kod
-            if value1 == value2:
-                common_numbers[key1] = [value2]
-                print(common_numbers)
-            elif key1 in correct_codes and correct_codes[key1] == value1:
-                bulls[key1] = value1
-                print("Bulls", bulls)
-
-
-    for i, key in enumerate(user_codes.values()):
-        if key in correct_codes.values(): # and user_codes.values() == correct_codes.values():
-            same_code.append(key)
-            if len(same_code) == 1:
-                print(len(same_code), "Cow")
-
-
-    return print(type(guess_code)), print(type(random_number)), print(user_codes), print(correct_codes)
-
-
-def cows(code1, code2)
+def cows(code1, code2):
     """
     Checks if´s there is correct guess in the Bulls and Cows game and return values
     First code is the code that user is typing and trying to guess
@@ -111,18 +68,37 @@ def cows(code1, code2)
 
     guess_code = str(code1)
     random_number = str(code2)
-    check_c1 = dict()
-    check_c2 = dict()
-    common = []
+    check_c1 = []
+    check_c2 = []
+    bulls = []
+    cows = []
 
-    for x in enumerate(check_c1.values()):
-        if x in check_c2.values():
-            common.append(x)
-            if len(common) == 1:
-                print(len(common), "Cow")
-            elif len(common) == 0 or len(common) > 1:
-                print(len(common), "Cows")
+    for i, x in enumerate(guess_code):
+        check_c1.append(x)
 
+    for i, y in enumerate(random_number):
+        check_c2.append(y)
+
+    while True:
+        for i, x in enumerate(check_c1):
+            for ix, y in enumerate(check_c2):
+                if ix == i and x == y:
+                    bulls.append(x)
+                elif x in check_c2 and not ix == i and x == y:
+                    cows.append(y)
+
+        if len(bulls) == 1 and len(cows) == 1:
+            print(f"{len(bulls)} Bull, {len(cows)} Cow")
+        elif len(bulls) != 1 and len(cows) != 1:
+            print(f"{len(bulls)} Bulls, {len(cows)} Cows")
+        if len(bulls) == 1 and len(cows) != 1:
+            print(f"{len(bulls)} Bull, {len(cows)} Cows")
+        elif len(bulls) != 1 and len(cows) == 1:
+            print(f"{len(bulls)} Bulls, {len(cows)} Cow")
+            
+        break
+
+    return
 
 # Presentation and rules
 print("Hi There!")
@@ -144,14 +120,30 @@ while True:
         continue
 print(random_number)
 
+while True:
+    first_try = input("Enter a 4 Digit Number: ")
+    if control(first_try) == False:
+        continue
+    elif nozero(first_try) == False:
+        continue
+    elif duplicities(first_try) == False:
+        continue
+    else:
+        cows(first_try, random_number)
+    while True:
+        code1 = input(">>>: ")
+        cows(code1, random_number)
+
+
+
 
 while True:
     first_try = input("Enter a 4 Digits Number: ")
-    if length(first_try) == False:
+    if control(first_try) == False:
         continue
     while True:
         number = input("Guess: ")
-        if length(number) == False:
+        if control(number) == False:
             continue
         if number or first_try == random_number: # Correct answer wins the game
             print("Correct, You have guessed the right number!")
@@ -160,14 +152,6 @@ while True:
             number is not random_number
             print("Nope, continue")
             continue
-
-
-
-# pokud uhadne vypsat vysledek
-
-# Trefí číslo i pozici = 1 BULL
-# Trefí ČÍslo ale ne Pozici = 1 COW
-# Program bude umět množné sklonovani
 
 
 
