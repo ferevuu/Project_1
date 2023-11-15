@@ -130,9 +130,17 @@ while True:
         continue
     else:
         cows(first_try, random_number)
+
     while True:
-        code1 = input(">>>: ")
-        cows(code1, random_number)
+        code = input(">>>: ")
+        if control(code) == False:
+            continue
+        elif nozero(code) == False:
+            continue
+        elif duplicities(code) == False:
+            continue
+        else:
+            cows(code, random_number)
 
 
 
