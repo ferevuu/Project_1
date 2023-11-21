@@ -12,14 +12,14 @@ import math
 
 line = "-" * 40
 
-def duplicities(code, show_print):
+def check_duplicities(code, show_print):
     """
-    Converts 4 Digit input code to a string to and it compares the values
+    Converts 4 Digit input code to a string to and then it compares the length of the set.
     """
     string = str(code)
 
     if len(string) != len(set(string)):
-        if show_print: # If random number generates number with duplicated numbers in code, skip it and print it only when user enters duplicated numbers.
+        if show_print: 
             print("Duplicities are not allowed, Enter unique numbers")
         return False
         
@@ -27,7 +27,7 @@ def duplicities(code, show_print):
 
 def control(code):
     """
-    Checks if entered input is 4 digits long and if it´s an integer
+    Checks if entered input is 4 digits long and if it´s an integer nad if the code starts with zero
     """
 
     if len(code) != 4 and code.isdigit(): 
@@ -48,21 +48,13 @@ def check(code1, code2):
     """
     Checks if´s there is correct guess in the Bulls and Cows game and return values
     First code is the code that user is typing and trying to guess
-    Second code is the correct code which he needs to guess
+    Second code is the correct code which user needs to guess
     """
 
-    guess_code = str(code1)
-    random_number = str(code2)
-    check_c1 = []
-    check_c2 = []
+    check_c1 = list(code1)
+    check_c2 = list(code2)
     bulls = []
     cows = []
-
-    for i, x in enumerate(guess_code): # Indexing user attempts to compare values with Random generated code
-        check_c1.append(x)
-
-    for i, y in enumerate(random_number): # Indexing Random generated code to compare values with user´s attempts
-        check_c2.append(y)
 
     while True: # Indexing Lists of those 2 codes and compares if the positions and numbers are common or not and if yes, it adds it to the Lists
         for i, x in enumerate(check_c1):
@@ -102,7 +94,7 @@ print(line)
 
 while True: # generates random 4 Digits number for the game & It does not starts with 0
     random_number = random.randrange(1000, 9999)
-    if duplicities(random_number, False) is True:
+    if check_duplicities(random_number, False) is True:
         break
     else:
         continue
@@ -115,9 +107,9 @@ while True: # Checks if user can guess the number on his first try, if not, cont
         code = input(">>>: ")
         if control(code) == False:
             continue
-        elif duplicities(code, True) == False:
+        elif check_duplicities(code, True) == False:
             continue
-        elif check(code, random_number) == True:
+        elif check(code, str(random_number)) == True:
                 break
     break
 
