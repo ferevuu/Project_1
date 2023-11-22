@@ -42,6 +42,8 @@ def control(code):
     else:
         return True
 
+        
+
 def check(code1, code2):
     """
     Checks if´s there is correct guess in the Bulls and Cows game and return values
@@ -75,6 +77,7 @@ def check(code1, code2):
     
     return False
 
+
 # Presentation and rules
 print("Hi There!")
 print(line)
@@ -87,6 +90,7 @@ print("""
     - The Code must be 4 Digits long
 """)
 print(line)
+
 
 code = random.sample(range(10), 4)  # Generate 4 digit code
 if code[0] == 0:
