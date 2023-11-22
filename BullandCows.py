@@ -76,17 +76,18 @@ def check(code1, code2):
     return False
 
 # Presentation and rules
-print("Hi There!")
-print(line)
-print("""
-    I Have generated a random 4 digit code for you.
-    Let´s play Bulls & Cows game.
-    Basic Rules: 
-    - The Code can´t start with 0
-    - Numbers in the Code canno´t be twice
-    - The Code must be 4 Digits long
-""")
-print(line)
+if __name__ == "__main__":
+    print("Hi There!")
+    print(line)
+    print("""
+        I Have generated a random 4 digit code for you.
+        Let´s play Bulls & Cows game.
+        Basic Rules: 
+        - The Code can´t start with 0
+        - Numbers in the Code canno´t be twice
+        - The Code must be 4 Digits long
+    """)
+    print(line)
 
 code = random.sample(range(10), 4)  # Generate 4 digit code
 if code[0] == 0:
@@ -113,7 +114,6 @@ elapsed_time = end_time - start_time
 time = math.ceil(elapsed_time)
 print(line)
 print("You have guessed the code in: ", time, "Seconds !")
-
 
 
 
